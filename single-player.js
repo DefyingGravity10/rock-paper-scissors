@@ -52,7 +52,20 @@ function playRound(playerSelection, computerSelection) {
             }
     }
 }
-let playerSelection = "scissors";
-let computerSelection = getComputerChoice();
 
-console.log(formatChoice(playerSelection));
+function game() {
+    let playerSelection;
+    let computerSelection;
+
+    for (let i=0; i<5; i++) {
+        do {
+            playerSelection = formatChoice(prompt("Rock, Paper, or Scissors? "));
+        } while(playerSelection.toLowerCase() != "rock" && playerSelection.toLowerCase() != "paper" && playerSelection.toLowerCase() != "scissors")
+        
+        computerSelection = getComputerChoice();
+
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
+game();

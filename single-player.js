@@ -6,7 +6,7 @@
 */
 
 function formatChoice(playerChoice) {
-    return playerChoice.split(0, 1).toUpperCase() + playerChoice.split(1).toLowerCase();
+    return playerChoice.slice(0, 1).toUpperCase() + playerChoice.slice(1).toLowerCase();
 }
 
 function getComputerChoice() {
@@ -52,7 +52,7 @@ function playRound(playerSelection, computerSelection) {
             }
     }
 }
-let playerSelection = "rOCk";
+let playerSelection = "scissors";
 let computerSelection = getComputerChoice();
 
 console.log(formatChoice(playerSelection));

@@ -5,6 +5,10 @@
 4. Display the score.
 */
 
+function formatChoice(playerChoice) {
+    return playerChoice.split(0, 1).toUpperCase() + playerChoice.split(1).toLowerCase();
+}
+
 function getComputerChoice() {
     let numChoice = (Math.random() * 10) % 3;
     
@@ -48,7 +52,7 @@ function playRound(playerSelection, computerSelection) {
             }
     }
 }
-let playerSelection = "Rock";
+let playerSelection = "rOCk";
 let computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection));
+console.log(formatChoice(playerSelection));

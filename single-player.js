@@ -18,3 +18,37 @@ function getComputerChoice() {
             return "Scissors";
     }
 }
+ 
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        return `It's a draw! ${playerSelection} cannot beat itself.`
+    }
+
+    switch(playerSelection) {
+        case "Rock":
+            if (computerSelection === "Scissors") {
+                return `You win! ${playerSelection} beats ${computerSelection}.`;
+            }
+            else {
+                return `You lose! ${computerSelection} beats ${playerSelection}.`;
+            }
+        case "Paper":
+            if (computerSelection === "Rock") {
+                return `You win! ${playerSelection} beats ${computerSelection}.`;
+            }
+            else {
+                return `You lose! ${computerSelection} beats ${playerSelection}.`;
+            }
+        default: 
+            if (computerSelection === "Paper") {
+                return `You win! ${playerSelection} beats ${computerSelection}.`;
+            }
+            else {
+                return `You lose! ${computerSelection} beats ${playerSelection}.`;
+            }
+    }
+}
+let playerSelection = "Rock";
+let computerSelection = getComputerChoice();
+
+console.log(playRound(playerSelection, computerSelection));

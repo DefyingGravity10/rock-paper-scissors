@@ -1,10 +1,3 @@
-/*Pseudocode
-1. Obtain input from the user (i.e. RPS)
-2. Let the computer select between RPS
-3. Compare the Player and Computer's selections
-4. Display the score.
-*/
-
 function formatChoice(playerChoice) {
     return playerChoice.slice(0, 1).toUpperCase() + playerChoice.slice(1).toLowerCase();
 }
@@ -24,32 +17,49 @@ function getComputerChoice() {
 }
  
 function playRound(playerSelection, computerSelection) {
+    /*Indicates a draw */
     if (playerSelection === computerSelection) {
-        return `It's a draw! ${playerSelection} cannot beat itself.`
+        return [`It's a draw! ${playerSelection} cannot beat itself.`, 0, 0]
     }
 
     switch(playerSelection) {
         case "Rock":
             if (computerSelection === "Scissors") {
-                return `You win! ${playerSelection} beats ${computerSelection}.`;
+                return [`You win! ${playerSelection} beats ${computerSelection}.`, 1, 0];
             }
             else {
-                return `You lose! ${computerSelection} beats ${playerSelection}.`;
+                return [`You lose! ${computerSelection} beats ${playerSelection}.`, 0, 1];
             }
         case "Paper":
-            if (computerSelection === "Rock") {
-                return `You win! ${playerSelection} beats ${computerSelection}.`;
+            if (computerSelection === "Scissors") {
+                return [`You win! ${playerSelection} beats ${computerSelection}.`, 1, 0];
             }
             else {
-                return `You lose! ${computerSelection} beats ${playerSelection}.`;
+                return [`You lose! ${computerSelection} beats ${playerSelection}.`, 0, 1];
             }
-        default: 
-            if (computerSelection === "Paper") {
-                return `You win! ${playerSelection} beats ${computerSelection}.`;
+        default:
+            if (computerSelection === "Scissors") {
+                return [`You win! ${playerSelection} beats ${computerSelection}.`, 1, 0];
             }
             else {
-                return `You lose! ${computerSelection} beats ${playerSelection}.`;
+                return [`You lose! ${computerSelection} beats ${playerSelection}.`, 0, 1];
             }
+    }
+}
+
+function displayWinner(playerScore, computerScore) {
+    console.log(`=====Final Scores=====
+    Player: ${playerScore}
+    Computer: ${computerScore}\n`);
+
+    if (playerScore > computerScore) {
+        console.log("Congratulations, you win!");
+    }
+    else if (playerScore < computerScore) {
+        console.log("Sorry, you lose. Better luck next time!");
+    }
+    else {
+        console.log("It's a draw!");
     }
 }
 
@@ -57,15 +67,26 @@ function game() {
     let playerSelection;
     let computerSelection;
 
+    let roundVerdict;
+    let playerScore = 0;
+    let computerScore = 0;
+
     for (let i=0; i<5; i++) {
+        /* Loop ensures that players can only place valid inputs. */
         do {
             playerSelection = formatChoice(prompt("Rock, Paper, or Scissors? "));
         } while(playerSelection.toLowerCase() != "rock" && playerSelection.toLowerCase() != "paper" && playerSelection.toLowerCase() != "scissors")
         
         computerSelection = getComputerChoice();
 
-        console.log(playRound(playerSelection, computerSelection));
+        roundVerdict = playRound(playerSelection, computerSelection);
+        console.log(roundVerdict[0]);
+        playerScore += roundVerdict[1];
+        computerScore += roundVerdict[2];
     }
+
+    /* Displays the overall status of the game. */
+    displayWinner(playerScore, computerScore);
 }
 
 game();

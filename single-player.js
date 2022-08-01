@@ -71,12 +71,9 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let i=0; i<5; i++) {
-        /* Loop ensures that players can only place valid inputs. */
-        do {
-            playerSelection = formatChoice(prompt("Rock, Paper, or Scissors? "));
-        } while(playerSelection.toLowerCase() != "rock" && playerSelection.toLowerCase() != "paper" && playerSelection.toLowerCase() != "scissors")
-        
+    for (let i=0; i<1; i++) {
+
+        //add player's selection here
         computerSelection = getComputerChoice();
 
         roundVerdict = playRound(playerSelection, computerSelection);
@@ -89,4 +86,13 @@ function game() {
     displayWinner(playerScore, computerScore);
 }
 
-game();
+//game();
+
+//The portions below merely serve as functionality
+function getPlayerChoice(e) {
+    const playerChoice = e.target.getAttribute('class');
+    console.log(formatChoice(playerChoice));
+}
+
+const buttons = Array.from(document.querySelectorAll("button"));
+buttons.forEach(button => button.addEventListener("click", getPlayerChoice));

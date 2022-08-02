@@ -2,21 +2,6 @@ function formatChoice(playerChoice) {
     return playerChoice.slice(0, 1).toUpperCase() + playerChoice.slice(1).toLowerCase();
 }
 
-function obtainChoices(e) {
-    let playerSelection;
-    let computerSelection;
-    let roundVerdict;
-    
-    const playerChoice = e.target.getAttribute('class');
-    playerSelection = formatChoice(playerChoice);
-    computerSelection = getComputerChoice();
-    roundVerdict = playRound(playerSelection, computerSelection);
-    console.log(roundVerdict[0]);
-    playerScore += roundVerdict[1];
-    computerScore += roundVerdict[2];
-    
-}
-
 function getComputerChoice() {
     let numChoice = (Math.random() * 10) % 3;
     
@@ -78,18 +63,27 @@ function displayWinner(playerScore, computerScore) {
     }
 }
 
-function game() { 
-
-    for (let i=0; i<5; i++) {
-        const buttons = Array.from(document.querySelectorAll("button"));
-        buttons.forEach(button => button.addEventListener("click", obtainChoices));
-        
-    }
-
+function game(e) { 
+    let playerSelection;
+    let computerSelection;
+    let roundVerdict;
+    
+    const playerChoice = e.target.getAttribute('class');
+    playerSelection = formatChoice(playerChoice);
+    computerSelection = getComputerChoice();
+    roundVerdict = playRound(playerSelection, computerSelection);
+    console.log(roundVerdict[0]);
+    playerScore += roundVerdict[1];
+    computerScore += roundVerdict[2];
+    
     /* Displays the overall status of the game. */
-    displayWinner(playerScore, computerScore);
+    if (playerScore >= 5 || computerScore >= 5) {
+        displayWinner(playerScore, computerScore);
+        return;
+    }
 }
 
 let playerScore = 0;
 let computerScore = 0;
-game();
+const buttons = Array.from(document.querySelectorAll("button"));
+buttons.forEach(button => button.addEventListener("click", game));

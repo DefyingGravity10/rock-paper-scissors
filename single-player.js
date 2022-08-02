@@ -31,14 +31,14 @@ function playRound(playerSelection, computerSelection) {
                 return [`You lose! ${computerSelection} beats ${playerSelection}.`, 0, 1];
             }
         case "Paper":
-            if (computerSelection === "Scissors") {
+            if (computerSelection === "Rock") {
                 return [`You win! ${playerSelection} beats ${computerSelection}.`, 1, 0];
             }
             else {
                 return [`You lose! ${computerSelection} beats ${playerSelection}.`, 0, 1];
             }
         default:
-            if (computerSelection === "Scissors") {
+            if (computerSelection === "Paper") {
                 return [`You win! ${playerSelection} beats ${computerSelection}.`, 1, 0];
             }
             else {
@@ -76,11 +76,6 @@ function game(e) {
     playerScore += roundVerdict[1];
     computerScore += roundVerdict[2];
     
-    /* Displays the overall status of the game. */
-    if (playerScore >= 5 || computerScore >= 5) {
-        displayWinner(playerScore, computerScore);
-        return;
-    }
 }
 
 let playerScore = 0;

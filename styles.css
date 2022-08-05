@@ -1,0 +1,36 @@
+html, body, .container, .monitor, .screen, .controls {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+html {
+    justify-content: center;
+}
+
+body {
+    max-width: 715px;
+}
+
+.container {
+    flex-direction: column;
+}
+
+.monitor {
+    height: 363px;
+    background-color: #cacaca;
+}
+
+.screen {
+    margin: 30px;
+    max-width: 655px;
+    background-color: #262626;
+    color: white;
+}
+
+.controls {
+    height: 187px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d9d9d9;
+}
+

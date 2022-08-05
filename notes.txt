@@ -1,5 +1,0 @@
-Progress for now:
-Goal: Ensure that the buttons are responsive
-
-1) Added buttons for the choices and placed them in a container
-2) Removed functions that were not needed

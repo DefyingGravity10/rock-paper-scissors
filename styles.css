@@ -1,4 +1,4 @@
-html, body, .container, .monitor, .screen, .controls {
+html, body, .container, .monitor, .screen, .controls, .options-container, .restart-container {
     display: flex;
     flex: 1 1 auto;
 }
@@ -29,8 +29,11 @@ body {
 
 .controls {
     height: 187px;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
     background-color: #d9d9d9;
 }
 
+.options-container, .restart-container {
+    justify-content: space-around;
+    align-items: center;
+}

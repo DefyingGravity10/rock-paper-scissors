@@ -47,6 +47,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function resetGame() {
+    playerScore = 0; 
+    computerScore = 0;
+
+    restart.disabled = true;
+    buttons.forEach(button => button.disabled = false);
+}
+
 function displayWinner(playerScore, computerScore) {
     console.log(`=====Final Scores=====
     Player: ${playerScore}
@@ -61,14 +69,20 @@ function displayWinner(playerScore, computerScore) {
     else {
         console.log("It's a draw!");
     }
+
+    //Disable the buttons. 
+    buttons.forEach(button => button.disabled = true);
+    restart.disabled = false;
+    restart.addEventListener("click", resetGame);
+    
 }
 
 function game(e) { 
     let playerSelection;
     let computerSelection;
     let roundVerdict;
-    
-    const playerChoice = e.target.getAttribute('class');
+
+    const playerChoice = e.target.getAttribute('id');
     playerSelection = formatChoice(playerChoice);
     computerSelection = getComputerChoice();
     roundVerdict = playRound(playerSelection, computerSelection);
@@ -76,9 +90,17 @@ function game(e) {
     playerScore += roundVerdict[1];
     computerScore += roundVerdict[2];
     
+    if (playerScore >= 5 || computerScore >= 5) {
+        displayWinner(playerScore, computerScore);
+        return;
+    }
 }
 
 let playerScore = 0;
 let computerScore = 0;
-const buttons = Array.from(document.querySelectorAll("button"));
+
+const buttons = Array.from(document.querySelectorAll(".options"));
 buttons.forEach(button => button.addEventListener("click", game));
+
+const restart = document.querySelector(".restart");
+restart.disabled = true;

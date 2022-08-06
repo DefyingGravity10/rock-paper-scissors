@@ -7,13 +7,9 @@ function game(e) {
 
     const roundVerdict = chooseRoundWinner(playerSelection, computerSelection);
 
-<<<<<<< HEAD
     let message = document.querySelector(".message");
     message.textContent = roundVerdict[0];
 
-=======
-    console.log(roundVerdict[0]);
->>>>>>> parent of 787a3c3 (Display status on-screen instead of the console)
     playerScore += roundVerdict[1];
     computerScore += roundVerdict[2];
     alterDisplayedScore(playerScore, computerScore);
@@ -82,14 +78,9 @@ function alterDisplayedScore(playerScore, computerScore) {
 }
 
 function displayWinner(playerScore, computerScore) {
-<<<<<<< HEAD
+
     let message = document.querySelector(".message");
     let string;
-=======
-    console.log(`=====Final Scores=====
-    Player: ${playerScore}
-    Computer: ${computerScore}\n`);
->>>>>>> parent of 787a3c3 (Display status on-screen instead of the console)
 
     if (playerScore > computerScore) {
         console.log("Congratulations, you win!");
@@ -115,12 +106,6 @@ function resetGame() {
     computerScore = 0;
     alterDisplayedScore(playerScore, computerScore);
 
-<<<<<<< HEAD
-    let message = document.querySelector(".message");
-    message.textContent = "";
-
-=======
->>>>>>> parent of 787a3c3 (Display status on-screen instead of the console)
     restart.disabled = true;
     buttonsRps.forEach(button => button.disabled = false);
 }

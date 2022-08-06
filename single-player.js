@@ -78,20 +78,20 @@ function alterDisplayedScore(playerScore, computerScore) {
 }
 
 function displayWinner(playerScore, computerScore) {
-
     let message = document.querySelector(".message");
     let string;
 
     if (playerScore > computerScore) {
-        console.log("Congratulations, you win!");
+        string = "Congratulations, you win!";
     }
     else if (playerScore < computerScore) {
-        console.log("Sorry, you lose. Better luck next time!");
+        string = "Sorry, you lose. Better luck next time!";
     }
     else {
-        console.log("It's a draw!");
+        string = "It's a draw!";
     }
 
+    message.textContent = string;
     displayRestartButton();
 }
 
@@ -104,6 +104,9 @@ function displayRestartButton() {
 function resetGame() {
     playerScore = 0; 
     computerScore = 0;
+
+    let message = document.querySelector(".message");
+    message.textContent = "";
     alterDisplayedScore(playerScore, computerScore);
 
     restart.disabled = true;

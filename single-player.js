@@ -1,11 +1,30 @@
-function formatChoice(playerChoice) {
+function game(e) { 
+    //IDs for buttons are either "rock", "paper" or "scissors"
+    const playerChoice = e.target.getAttribute('id');
+    let playerSelection = formatPlayerChoice(playerChoice);
+
+    let computerSelection = getComputerChoice();
+
+    const roundVerdict = chooseRoundWinner(playerSelection, computerSelection);
+
+    console.log(roundVerdict[0]);
+    playerScore += roundVerdict[1];
+    computerScore += roundVerdict[2];
+    
+    if (playerScore >= 5 || computerScore >= 5) {
+        displayWinner(playerScore, computerScore);
+        return;
+    }
+}
+
+function formatPlayerChoice(playerChoice) {
     return playerChoice.slice(0, 1).toUpperCase() + playerChoice.slice(1).toLowerCase();
 }
 
 function getComputerChoice() {
     let numChoice = (Math.random() * 10) % 3;
     
-    /* Legend: 0 - Rock, 1 - Paper, 2 - Scissors */
+    // Legend: 0 - Rock, 1 - Paper, 2 - Scissors 
     switch(Math.round(numChoice)) {
         case 0: 
             return "Rock";
@@ -16,8 +35,8 @@ function getComputerChoice() {
     }
 }
  
-function playRound(playerSelection, computerSelection) {
-    /*Indicates a draw */
+function chooseRoundWinner(playerSelection, computerSelection) {
+    //Indicates a draw
     if (playerSelection === computerSelection) {
         return [`It's a draw! ${playerSelection} cannot beat itself.`, 0, 0]
     }
@@ -47,14 +66,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function resetGame() {
-    playerScore = 0; 
-    computerScore = 0;
-
-    restart.disabled = true;
-    buttons.forEach(button => button.disabled = false);
-}
-
 function displayWinner(playerScore, computerScore) {
     console.log(`=====Final Scores=====
     Player: ${playerScore}
@@ -70,37 +81,29 @@ function displayWinner(playerScore, computerScore) {
         console.log("It's a draw!");
     }
 
-    //Disable the buttons. 
-    buttons.forEach(button => button.disabled = true);
+    displayRestartButton();
+}
+
+function displayRestartButton() {
+    buttonsRps.forEach(button => button.disabled = true);
     restart.disabled = false;
     restart.addEventListener("click", resetGame);
-    
 }
 
-function game(e) { 
-    let playerSelection;
-    let computerSelection;
-    let roundVerdict;
+function resetGame() {
+    playerScore = 0; 
+    computerScore = 0;
 
-    const playerChoice = e.target.getAttribute('id');
-    playerSelection = formatChoice(playerChoice);
-    computerSelection = getComputerChoice();
-    roundVerdict = playRound(playerSelection, computerSelection);
-    console.log(roundVerdict[0]);
-    playerScore += roundVerdict[1];
-    computerScore += roundVerdict[2];
-    
-    if (playerScore >= 5 || computerScore >= 5) {
-        displayWinner(playerScore, computerScore);
-        return;
-    }
+    restart.disabled = true;
+    buttonsRps.forEach(button => button.disabled = false);
 }
 
+//Initialize scores and button states in the game
 let playerScore = 0;
 let computerScore = 0;
 
-const buttons = Array.from(document.querySelectorAll(".options"));
-buttons.forEach(button => button.addEventListener("click", game));
+const buttonsRps = Array.from(document.querySelectorAll(".options"));
+buttonsRps.forEach(button => button.addEventListener("click", game));
 
 const restart = document.querySelector(".restart");
 restart.disabled = true;

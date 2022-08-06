@@ -7,11 +7,12 @@ function game(e) {
 
     const roundVerdict = chooseRoundWinner(playerSelection, computerSelection);
 
-    let message = document.querySelector(".screen");
+    let message = document.querySelector(".message");
     message.textContent = roundVerdict[0];
 
     playerScore += roundVerdict[1];
     computerScore += roundVerdict[2];
+    alterDisplayedScore(playerScore, computerScore);
     
     if (playerScore >= 5 || computerScore >= 5) {
         displayWinner(playerScore, computerScore);
@@ -68,8 +69,16 @@ function chooseRoundWinner(playerSelection, computerSelection) {
     }
 }
 
+function alterDisplayedScore(playerScore, computerScore) {
+    let pScore = document.querySelector(".player-score");
+    let cScore = document.querySelector(".comp-score");
+
+    pScore.textContent = "Player: " + playerScore;
+    cScore.textContent = "Computer: " + computerScore;
+}
+
 function displayWinner(playerScore, computerScore) {
-    let message = document.querySelector(".screen");
+    let message = document.querySelector(".message");
     let string;
 
     if (playerScore > computerScore) {
@@ -96,8 +105,9 @@ function displayRestartButton() {
 function resetGame() {
     playerScore = 0; 
     computerScore = 0;
+    alterDisplayedScore(playerScore, computerScore);
 
-    let message = document.querySelector(".screen");
+    let message = document.querySelector(".message");
     message.textContent = "";
 
     restart.disabled = true;
@@ -107,6 +117,7 @@ function resetGame() {
 //Initialize scores and button states in the game
 let playerScore = 0;
 let computerScore = 0;
+alterDisplayedScore(playerScore, computerScore);
 
 const buttonsRps = Array.from(document.querySelectorAll(".options"));
 buttonsRps.forEach(button => button.addEventListener("click", game));

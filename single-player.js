@@ -7,7 +7,9 @@ function game(e) {
 
     const roundVerdict = chooseRoundWinner(playerSelection, computerSelection);
 
-    console.log(roundVerdict[0]);
+    let message = document.querySelector(".screen");
+    message.textContent = roundVerdict[0];
+
     playerScore += roundVerdict[1];
     computerScore += roundVerdict[2];
     
@@ -67,19 +69,20 @@ function chooseRoundWinner(playerSelection, computerSelection) {
 }
 
 function displayWinner(playerScore, computerScore) {
-    console.log(`=====Final Scores=====
-    Player: ${playerScore}
-    Computer: ${computerScore}\n`);
+    let message = document.querySelector(".screen");
+    let string;
 
     if (playerScore > computerScore) {
-        console.log("Congratulations, you win!");
+        string = "Congratulations, you win!";
     }
     else if (playerScore < computerScore) {
-        console.log("Sorry, you lose. Better luck next time!");
+        string = "Sorry, you lose. Better luck next time!";
     }
     else {
-        console.log("It's a draw!");
+        string = "It's a draw!";
     }
+
+    message.textContent = string;
 
     displayRestartButton();
 }
@@ -93,6 +96,9 @@ function displayRestartButton() {
 function resetGame() {
     playerScore = 0; 
     computerScore = 0;
+
+    let message = document.querySelector(".screen");
+    message.textContent = "";
 
     restart.disabled = true;
     buttonsRps.forEach(button => button.disabled = false);

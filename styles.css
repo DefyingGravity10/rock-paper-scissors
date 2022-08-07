@@ -1,4 +1,5 @@
-html, body, .container, .monitor, .screen, .controls, .options-container, .restart-container {
+html, body, .container, .monitor, .screen, .controls, .options-container, 
+.restart-container, .score-board, .label {
     display: flex;
     flex: 1 1 auto;
 }
@@ -25,6 +26,18 @@ body {
     max-width: 655px;
     background-color: #262626;
     color: white;
+    flex-direction: column;
+}
+
+.score-board {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+
+.label {
+    flex-direction: column;
+    align-items: center;
 }
 
 .controls {

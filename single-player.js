@@ -73,8 +73,8 @@ function alterDisplayedScore(playerScore, computerScore) {
     let pScore = document.querySelector(".player-score");
     let cScore = document.querySelector(".comp-score");
 
-    pScore.textContent = "Player: " + playerScore;
-    cScore.textContent = "Computer: " + computerScore;
+    pScore.textContent = playerScore;
+    cScore.textContent = computerScore;
 }
 
 function displayWinner(playerScore, computerScore) {

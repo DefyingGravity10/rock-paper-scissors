@@ -5,7 +5,7 @@
 }
   
 html, body, .container, .monitor, .screen, .controls, .options-container, 
-.restart-container, .score-board, .label, .message {
+.restart-container, .score-board, .label, .message, .button-container {
     display: flex;
     flex: 1 1 auto;
 }
@@ -67,15 +67,10 @@ body {
     background-color: #d9d9d9;
 }
 
-.options-container {
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 8px;
-}
-
 .restart-container {
     justify-content: center;
     align-items: center;
+    padding: 2px 0px 0px 0px;
 }
 
 .restart {
@@ -88,6 +83,28 @@ body {
     color: white;
     font-size: 12px;
     font-family: "Press-start-2p";
+}
+
+.options-container {
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.button-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+img {
+    font-size: 10px;
+    width: 40px;
+}
+
+.scis {
+    width: 34px;
 }
 
 .options {

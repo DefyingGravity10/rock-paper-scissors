@@ -106,7 +106,7 @@ function resetGame() {
     computerScore = 0;
 
     let message = document.querySelector(".message");
-    message.textContent = "";
+    message.textContent = "Select your fighter!";
     alterDisplayedScore(playerScore, computerScore);
 
     restart.disabled = true;

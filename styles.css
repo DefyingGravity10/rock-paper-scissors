@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Press-start-2p";
+    src: url("fonts/pressstart2p-regular-webfont.woff2") format("woff2"),
+         url("fonts/pressstart2p-regular-webfont.woff") format("woff");
+}
+  
 html, body, .container, .monitor, .screen, .controls, .options-container, 
 .restart-container, .score-board, .label, .message {
     display: flex;
@@ -9,7 +15,8 @@ html {
 }
 
 body {
-    max-width: 715px;
+    max-width: 500px;
+    font-family: "Press-start-2p";
 }
 
 .container {
@@ -18,13 +25,14 @@ body {
 
 .monitor {
     height: 363px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     background-color: #cacaca;
-    /*align-items: center; */
 }
 
 .screen {
+    border-radius: 12px;
     margin: 30px;
-    max-width: 655px;
     background-color: #262626;
     color: white;
     flex-direction: column;
@@ -40,6 +48,7 @@ body {
 .label {
     flex-direction: column;
     align-items: center;
+    gap: 4px;
 }
 
 .message {
@@ -47,15 +56,56 @@ body {
     padding: 0px 20px 20px 20px;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .controls {
     height: 187px;
     flex-direction: column;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     background-color: #d9d9d9;
 }
 
-.options-container, .restart-container {
+.options-container {
     justify-content: space-around;
     align-items: center;
+    padding-bottom: 8px;
 }
+
+.restart-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.restart {
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 0px;
+    width: 180px;
+    height: 36px;
+    background-color: #4db02a;
+    color: white;
+    font-size: 12px;
+    font-family: "Press-start-2p";
+}
+
+.options {
+    border-width: 0px;
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+}
+
+#rock {
+    background-color: #164092;
+}
+
+#paper {
+    background-color: #d3c64f;
+}
+
+#scissors {
+    background-color: #920000;
+}
+

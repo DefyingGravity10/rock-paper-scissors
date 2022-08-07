@@ -1,5 +1,5 @@
 html, body, .container, .monitor, .screen, .controls, .options-container, 
-.restart-container, .score-board, .label {
+.restart-container, .score-board, .label, .message {
     display: flex;
     flex: 1 1 auto;
 }
@@ -19,6 +19,7 @@ body {
 .monitor {
     height: 363px;
     background-color: #cacaca;
+    /*align-items: center; */
 }
 
 .screen {
@@ -32,11 +33,19 @@ body {
 .score-board {
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px 0px;
+    align-items: flex-start;
+    padding: 20px 0px 0px 0px;
 }
 
 .label {
     flex-direction: column;
+    align-items: center;
+}
+
+.message {
+    height: 75%;
+    padding: 0px 20px 20px 20px;
+    justify-content: center;
     align-items: center;
 }
 

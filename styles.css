@@ -83,6 +83,7 @@ body {
     color: white;
     font-size: 12px;
     font-family: "Press-start-2p";
+    box-shadow: 0px -1px 5px 1px #28a243 inset;
 }
 
 .options-container {
@@ -116,13 +117,17 @@ img {
 
 #rock {
     background-color: #164092;
+    box-shadow: 0px -1px 5px 1px #1B0474 inset;
 }
 
 #paper {
     background-color: #d3c64f;
+    box-shadow: 0px -1px 5px 1px #C0B446 inset;
+
 }
 
 #scissors {
     background-color: #920000;
+    box-shadow: 0px -1px 5px 1px #670025 inset;
 }
 

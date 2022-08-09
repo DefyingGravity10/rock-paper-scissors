@@ -5,18 +5,19 @@
 }
   
 html, body, .container, .monitor, .screen, .controls, .options-container, 
-.restart-container, .score-board, .label, .message, .button-container {
+.restart-container, .score-board, .label, .message-board, .button-container {
     display: flex;
     flex: 1 1 auto;
 }
 
 html {
     justify-content: center;
+    background-color: #774473;
 }
 
 body {
     max-width: 500px;
-    font-family: "Press-start-2p";
+    font-family: "Press-start-2p", "MS UI Gothic", "Tahoma", "sans-serif";
 }
 
 .container {
@@ -43,20 +44,26 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     padding: 20px 0px 0px 0px;
+
 }
 
 .label {
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    color: #e9e98b;
 }
 
-.message {
+.message-board {
     height: 75%;
     padding: 0px 20px 20px 20px;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 40px;
+    color: #e9e98b;
+    line-height: 1.2;
 }
 
 .controls {
@@ -82,7 +89,7 @@ body {
     background-color: #4db02a;
     color: white;
     font-size: 12px;
-    font-family: "Press-start-2p";
+    font-family: "Press-start-2p", "MS UI Gothic", "Tahoma", "sans-serif";
     box-shadow: 0px -1px 5px 1px #28a243 inset;
 }
 

@@ -78,20 +78,18 @@ function alterDisplayedScore(playerScore, computerScore) {
 }
 
 function displayWinner(playerScore, computerScore) {
-    let message = document.querySelector(".message");
+    let prompt = document.querySelector(".prompt");
     let string;
 
     if (playerScore > computerScore) {
         string = "Congratulations, you win!";
     }
-    else if (playerScore < computerScore) {
+    else {
         string = "Sorry, you lose. Better luck next time!";
     }
-    else {
-        string = "It's a draw!";
-    }
 
-    message.textContent = string;
+    string += " Press the restart button to play again."
+    prompt.textContent = string;
     displayRestartButton();
 }
 
@@ -105,8 +103,10 @@ function resetGame() {
     playerScore = 0; 
     computerScore = 0;
 
+    let prompt = document.querySelector(".prompt");
+    prompt.textContent = "Select your fighter!";
     let message = document.querySelector(".message");
-    message.textContent = "Select your fighter!";
+    message.textContent = ""
     alterDisplayedScore(playerScore, computerScore);
 
     restart.disabled = true;

@@ -94,8 +94,12 @@ function displayWinner(playerScore, computerScore) {
 }
 
 function displayRestartButton() {
-    buttonsRps.forEach(button => button.disabled = true);
+    buttonsRps.forEach(button => {
+        button.disabled = true;
+        button.classList.toggle("disable");
+    });
     restart.disabled = false;
+    restart.classList.toggle("disable");
     restart.addEventListener("click", resetGame);
 }
 
@@ -110,7 +114,11 @@ function resetGame() {
     alterDisplayedScore(playerScore, computerScore);
 
     restart.disabled = true;
-    buttonsRps.forEach(button => button.disabled = false);
+    restart.classList.toggle("disable");
+    buttonsRps.forEach(button => {
+        button.disabled = false;
+        button.classList.toggle("disable");
+    });
 }
 
 //Initialize scores and button states in the game
@@ -123,3 +131,4 @@ buttonsRps.forEach(button => button.addEventListener("click", game));
 
 const restart = document.querySelector(".restart");
 restart.disabled = true;
+restart.classList.toggle("disable");
